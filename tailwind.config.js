@@ -6,7 +6,15 @@ module.exports = {
     './node_modules/primereact/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        pt_sans_arrow: ["PT Sans", "sans-serif"],
+        pt_sans: []
+      },
+      colors: {
+        secondary: '#072922'
+      }
+    },
   },
   plugins: [],
 }
