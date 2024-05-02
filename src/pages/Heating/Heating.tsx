@@ -10,4 +10,4 @@ const Heating: React.FC<HeatingProps> = () => {
     );
 };
 
-export default Heating
+export default Heating;
