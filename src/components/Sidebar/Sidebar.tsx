@@ -1,54 +1,79 @@
 import React, { useState } from 'react';
-import homeIcon from '../../assets/icons/home.svg';
-import infoIcon from '../../assets/icons/clock.svg';
-import lightIcon from '../../assets/icons/lightbulb.svg';
-import heatIcon from '../../assets/icons/sun.svg';
-import humidityIcon from '../../assets/icons/humidity.svg';
-import windowIcon from '../../assets/icons/windows.svg';
+import { useNavigate } from 'react-router-dom';
 
-const Sidebar: React.FC = () => {
+import HomeIcon from '../Icons/Home';
+import ClockIcon from '../Icons/Clock';
+import HumidityIcon from '../Icons/Humidity';
+import SunIcon from '../Icons/Sun';
+import WindowsIcon from '../Icons/Windows';
+import LightBulbIcon from '../Icons/LightBulb';
+
+import Logo from '../../assets/logo/logo.svg';
+
+import './Sidebar.sass';
+
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const [activeItem, setActiveItem] = useState<string>('Home');
+  const navigate = useNavigate();
 
   const menuItems = [
-    { name: 'Home', icon: homeIcon, section: 'Menu' },
-    { name: 'Information history', icon: infoIcon, section: 'Menu' },
-    { name: 'Lighting', icon: lightIcon, section: 'Utilities' },
-    { name: 'Heating', icon: heatIcon, section: 'Utilities' },
-    { name: 'Humidity', icon: humidityIcon, section: 'Utilities' },
-    { name: 'Windows', icon: windowIcon, section: 'Utilities' },
+    { name: 'Home', Icon: HomeIcon, path: '/', section: 'Menu' },
+    { name: 'Information History', Icon: ClockIcon, path: '/information-history', section: 'Menu' },
+    { name: 'Lighting', Icon: LightBulbIcon, path: '/lighting', section: 'Utilities' },
+    { name: 'Heating', Icon: SunIcon, path: '/heating', section: 'Utilities' },
+    { name: 'Humidity', Icon: HumidityIcon, path: '/humidity', section: 'Utilities' },
+    { name: 'Windows', Icon: WindowsIcon, path: '/windows', section: 'Utilities' }
   ];
 
   return (
-    <div className={`bg-white shadow-lg p-4 w-full md:w-64 min-h-screen`}>
-      <div className="text-left text-gray-400 text-xs mb-2 uppercase tracking-wide font-semibold">Menu</div>
-      <div className="flex flex-col space-y-2 mb-6">
-        {menuItems.filter(item => item.section === 'Menu').map((item, index) => (
-          <a key={index}
-             href="#"
-             className={`flex items-center space-x-3 py-3 px-4 rounded text-gray-400
-                         ${activeItem === item.name ? 'bg-green-100' : 'hover:bg-gray-50'}`}
-             onClick={() => setActiveItem(item.name)}
-          >
-            <img src={item.icon} alt={item.name} className="h-5 w-5" />
-            <span className="text-xs">{item.name}</span>
-          </a>
-        ))}
+    <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+      <div className='flex items-center h-20 gap-x-2 border-b px-5 lg:px-6 xl:px-8'>
+        <img src={Logo} className='w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12' alt='Logo' />
+        <span className='text-lg lg:text-lg xl:text-xl font-pt_sans text-secondary'>GreenHouse</span>
       </div>
-      <div className="text-left text-gray-400 text-xs mb-2 uppercase tracking-wide font-semibold">Utilities</div>
-      <div className="flex flex-col space-y-2">
-        {menuItems.filter(item => item.section === 'Utilities').map((item, index) => (
-          <a key={index}
-             href="#"
-             className={`flex items-center space-x-3 py-3 px-4 rounded text-gray-400
-                         ${activeItem === item.name ? 'bg-green-100' : 'hover:bg-gray-50'}`}
-             onClick={() => setActiveItem(item.name)}
-          >
-            <img src={item.icon} alt={item.name} className="h-5 w-5" />
-            <span className="text-xs">{item.name}</span>
-          </a>
-        ))}
+      <div className='pt-6 lg:pt-5'>
+        {/* Menu Section */}
+        <div className="text-left text-[#858585] text-xs mb-2 uppercase tracking-wide font-pt_sans_arrow px-5 lg:px-8 xl:px-10">Menu</div>
+        <div className="flex flex-col space-y-2 mb-6 px-3 lg:px-4 xl:px-6">
+          {menuItems.filter(item => item.section === 'Menu').map(item => (
+            <button
+              key={item.name}
+              className={`sidebar-item ${activeItem === item.name ? 'active' : ''}`}
+              onClick={() => {
+                setActiveItem(item.name);
+                navigate(item.path);
+              }}
+            >
+              <item.Icon color={activeItem === item.name ? '#10B981' : '#858585'} />
+              <span className="font-pt_sans">{item.name}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Utilities Section */}
+        <div className="text-left text-[#858585] text-xs mb-2 uppercase tracking-wide font-pt_sans_arrow px-5 lg:px-8 xl:px-10">Utilities</div>
+        <div className="flex flex-col space-y-2 px-3 lg:px-4 xl:px-6">
+          {menuItems.filter(item => item.section === 'Utilities').map(item => (
+            <button
+              key={item.name}
+              className={`sidebar-item ${activeItem === item.name ? 'active' : ''}`}
+              onClick={() => {
+                setActiveItem(item.name);
+                navigate(item.path);
+              }}
+            >
+              <item.Icon color={activeItem === item.name ? '#10B981' : '#858585'} />
+              <span className="font-pt_sans">{item.name}</span>
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
+    </aside>
   );
 };
 

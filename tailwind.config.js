@@ -8,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        pt_sans_arrow: ["PT Sans", "sans-serif"],
-        pt_sans: []
+        pt_sans_arrow: ["PT Sans Narrow", "sans-serif"],
+        pt_sans: ["PT Sans", "sans-serif"]
       },
       colors: {
+        primary: '#10B981',
         secondary: '#072922'
       }
     },
