@@ -1,7 +1,9 @@
+// App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
 
 import Home from './pages/Home/Home';
 import Heating from './pages/Heating/Heating';
