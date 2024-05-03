@@ -19,7 +19,7 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white w-64 min-h-screen shadow-lg p-6">
+    <div className={`bg-white shadow-lg p-4 w-full md:w-64 min-h-screen`}>
       <div className="text-left text-gray-400 text-xs mb-2 uppercase tracking-wide font-semibold">Menu</div>
       <div className="flex flex-col space-y-2 mb-6">
         {menuItems.filter(item => item.section === 'Menu').map((item, index) => (
