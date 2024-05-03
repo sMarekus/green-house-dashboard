@@ -1,12 +1,15 @@
 import React from 'react';
-import Logo from '../../assets/logo/logo.svg';
+import './Header.module.sass';  
 
 const Header = () => {
     return (
-        <header className='h-20 w-full border-b border-gray-400 fixed px-10'>
-            <div className='flex items-center h-full gap-x-2'>
-                <img src={Logo} alt="Logo" className='w-12 h-12' />
-                <h1 className='font-pt_sans text-secondary text-xl'>GreenHouse</h1>
+        <header className='h-20 w-full border-b border-[#0000001A] fixed px-5 lg:px-10 bg-white'>
+            <div className='flex items-center h-full'>
+                <button className='flex lg:hidden'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+                    </svg>
+                </button>
             </div>
         </header>
     );
