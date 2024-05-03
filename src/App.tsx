@@ -1,6 +1,5 @@
-// App.js
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -16,10 +15,15 @@ import Login from './pages/Login/Login';
 import './App.css';
 
 function App() {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+
   return (
     <div className="App">
-      <Header />
-      <BrowserRouter>
+      <Router>  {/* Ensure the Router wraps all components using navigation */}
+        <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}  />
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/heating' element={<Heating />} />
@@ -29,7 +33,7 @@ function App() {
           <Route path='/information-history' element={<InformationHistory />} />
           <Route path='/windows' element={<Windows />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
