@@ -31,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   ];
 
   return (
-    <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+    <aside className={`sidebar top-0 ${isOpen ? 'open' : 'closed'}`}>
       <div className='flex items-center h-20 gap-x-2 border-b px-5 lg:px-6 xl:px-8'>
         <img src={Logo} className='w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12' alt='Logo' />
         <span className='text-lg lg:text-lg xl:text-xl font-pt_sans text-secondary'>GreenHouse</span>
