@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
-
 import Home from './pages/Home/Home';
 import Heating from './pages/Heating/Heating';
 import Windows from './pages/Windows/Windows';
@@ -14,27 +13,43 @@ import Login from './pages/Login/Login';
 
 import './App.css';
 
+interface RoutesWrapperProps {
+  toggleSidebar: () => void;
+  isSidebarOpen: boolean;
+  setIsLoginPage: (isLoginPage: boolean) => void;
+}
+
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
+  const [isLoginPage, setIsLoginPage] = useState(false);
 
   return (
-    <div className="App">
-      <Router>  {/* Ensure the Router wraps all components using navigation */}
-        <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}  />
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/heating' element={<Heating />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/lighting' element={<Lighting />} />
-          <Route path='/humidity' element={<Humidity />} />
-          <Route path='/information-history' element={<InformationHistory />} />
-          <Route path='/windows' element={<Windows />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <RoutesWrapper toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} setIsLoginPage={setIsLoginPage} />
+      {!isLoginPage && <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />}
+      {!isLoginPage && <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />}
+    </Router>
+  );
+}
+
+function RoutesWrapper({ toggleSidebar, isSidebarOpen, setIsLoginPage }: RoutesWrapperProps) {
+  let location = useLocation();
+
+  useEffect(() => {
+    setIsLoginPage(location.pathname === '/login');
+  }, [location, setIsLoginPage]);
+
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/heating' element={<Heating />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/lighting' element={<Lighting />} />
+      <Route path='/humidity' element={<Humidity />} />
+      <Route path='/information-history' element={<InformationHistory />} />
+      <Route path='/windows' element={<Windows />} />
+    </Routes>
   );
 }
 
