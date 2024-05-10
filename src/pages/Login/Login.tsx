@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+/* API */
+import { login } from '../../api/api';
+
+/* Logo */ 
 import Logo from '../../assets/logo/logo.svg';
 
 /* PrimeReact Components */ 
@@ -6,18 +12,21 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 
-interface LoginProps {
-
-}
-
-const Login: React.FC<LoginProps> = () => {
-    const [email, setEmail] = useState<string>('');
+const Login: React.FC = () => {
+    const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
 
-    const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // Placeholder for login logic, e.g., API calls
-        console.log('Logging in with:', email, password);
+
+        try {
+            const token = await login(username, password);
+            localStorage.setItem('token', token);
+            navigate('/');
+        } catch (error) {
+            alert('Login failed, please check your credentials');
+        }
     };
 
     return (
@@ -30,12 +39,11 @@ const Login: React.FC<LoginProps> = () => {
                     </div>
                     <InputText 
                         className="w-full focus:shadow-none font-pt_sans"
-                        type="email" 
-                        id="email"
-                        name="email"
-                        placeholder="E-mail" 
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        id="username"
+                        name="username"
+                        placeholder="Username" 
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
                     />
                     <Password 
                         className="w-full"
