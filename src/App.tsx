@@ -45,6 +45,10 @@ function RoutesWrapper({ toggleSidebar, isSidebarOpen, setIsLoginPage }: RoutesW
     return <Navigate to="/login" replace />;
   }
 
+  if (isAuthenticated() && location.pathname === '/login') {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <Routes>
       <Route path='/' element={<Home />} />

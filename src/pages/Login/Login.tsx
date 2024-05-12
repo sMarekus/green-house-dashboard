@@ -15,17 +15,19 @@ import { Button } from 'primereact/button';
 const Login: React.FC = () => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setError(null);
 
         try {
             const token = await login(username, password);
             localStorage.setItem('token', token);
             navigate('/');
-        } catch (error) {
-            alert('Login failed, please check your credentials');
+        } catch (error: any) {
+            setError(error.response?.data?.message || 'Login failed. Please try again.');
         }
     };
 
@@ -63,6 +65,11 @@ const Login: React.FC = () => {
                         type="submit" 
                         label="Log in" 
                     />
+                    {error && (
+                        <div className="text-red-500 text-center mt-4">
+                            {error}
+                        </div>
+                    )}
                 </form>
             </div>
         </div>
