@@ -2,7 +2,7 @@ aside
     @apply bg-[#F8F8F8] w-60 lg:w-64 xl:w-80 h-screen overflow-hidden z-10 fixed -translate-x-full lg:-translate-x-0
 
     &.open
-        @apply translate-x-0
+        transform: translateX(0px)
 
 .sidebar-item
     @apply flex items-center gap-x-4 px-2 lg:px-4 py-2 lg:py-3 rounded-lg bg-transparent
@@ -15,14 +15,14 @@ aside
         @apply text-[#B4B4B4] text-sm xl:text-base
 
     &:hover
-        @apply bg-[#f0f0f0]
+        background-color: rgb(240 240 240)
 
     &.active
-        @apply bg-[#10b9811a]
         color: #10B981
+        background-color: #10b9811a
 
         svg
-            @apply stroke-primary
+            stroke: #10B981
 
         span
             color: #10B981
