@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-watch": "WATCHPACK_POLLING=true react-scripts start",
+    "start-watch": "cross-env WATCHPACK_POLLING=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "test:jest": "jest --config=jest.config.js",
@@ -55,6 +55,7 @@
     "@happy-dom/jest-environment": "^14.10.3",
     "autoprefixer": "^10.4.19",
     "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
     "happy-dom": "^14.10.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",

@@ -12,6 +12,8 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 
+import './Login.sass'
+
 const Login: React.FC = () => {
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -37,7 +39,7 @@ const Login: React.FC = () => {
                 <form onSubmit={handleLogin} className="space-y-6">
                     <div className="flex flex-col items-center justify-center">
                         <img src={Logo} alt="Logo" className="mb-4" />
-                        <h2 className="text-4xl font-bold mb-1 font-pt_sans_arrow text-secondary">Login</h2>
+                        <h2 className="text-4xl font-bold mb-1 font-pt_sans_arrow text-secondary header">Login</h2>
                     </div>
                     <InputText 
                         className="w-full focus:shadow-none font-pt_sans"
