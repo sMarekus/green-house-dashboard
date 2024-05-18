@@ -1,7 +1,19 @@
 import React from 'react';
+interface HumidityIconProps {
+    color?: string;
+    className?: string;
+}
 
-const HumidityIcon = ({ color = 'currentColor' }) => (
-    <svg fill={color} height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 328.611 328.611" xmlSpace="preserve">
+const HumidityIcon:React.FC<HumidityIconProps> = ({ color = 'currentColor',className}) => (
+    <svg
+    fill={color}
+    version="1.1"
+    id="Capa_1"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 328.611 328.611" 
+    xmlSpace="preserve">
         <g>
             <path d="M209.306,50.798c-2.452-3.337-7.147-4.055-10.485-1.602c-3.338,2.453-4.055,7.147-1.603,10.485
                 c54.576,74.266,66.032,123.541,66.032,151.8c0,27.691-8.272,52.794-23.293,70.685c-17.519,20.866-42.972,31.446-75.651,31.446

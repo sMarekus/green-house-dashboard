@@ -1,15 +1,13 @@
 import React from 'react';
-import ThresholdButton from '../../components/ThresholdButton'; // Update the path if needed
+import ThresholdButton from '../../components/ThresholdButton';
 import LightBulbIcon from '../../components/Icons/LightBulb';
-import Button from 'primereact/button';
-import './Lighting.sass';
 
 const Lighting: React.FC = () => {
     return (
-        <div className="lighting-page">
+        <div className="flex flex-col items-center justify-center h-screen">
             <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl mb-8'>Lighting</h1>
             <div className="mb-5">
-                <LightBulbIcon className="lightbulb-icon" />
+                <LightBulbIcon className="w-52 h-52" color='#BBBB' />
             </div>
             <div className="flex items-center mb-24 font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl">
                 <button className="bg-none">+</button>
