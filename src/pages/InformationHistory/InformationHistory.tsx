@@ -6,7 +6,6 @@ import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import { Column, ColumnFilterElementTemplateOptions } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { MultiSelect, MultiSelectChangeEvent } from 'primereact/multiselect';
-import { Tag } from 'primereact/tag';
 
 interface InformationHistoryProps {}
 
@@ -128,19 +127,13 @@ const InformationHistory: React.FC<InformationHistoryProps> = () => {
         );
     };
 
-    const typeItemTemplate = (option: string) => {
-        return <Tag value={option} />;
-    };
-
     const typeRowFilterTemplate = (options: ColumnFilterElementTemplateOptions) => {
         return (
             <MultiSelect
                 value={options.value}
                 options={types}
-                itemTemplate={typeItemTemplate}
                 onChange={(e: MultiSelectChangeEvent) => options.filterApplyCallback(e.value)}
                 placeholder="Select Types"
-                className=""
                 maxSelectedLabels={1}
                 style={{ minWidth: '14rem' }}
             />

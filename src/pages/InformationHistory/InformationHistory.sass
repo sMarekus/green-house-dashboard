@@ -16,4 +16,31 @@ input
 
     .p-highlight
         @apply bg-[#10b9811a] text-primary
-        
+
+.p-multiselect-items
+    .p-multiselect-item
+        @apply items-center
+    
+    .p-highlight
+        @apply bg-[#10b9811a] text-primary
+
+    .p-multiselect-checkbox
+        .p-highlight
+            @apply bg-transparent
+
+            input
+                @apply focus-visible:shadow-none
+
+            .p-checkbox-box
+                @apply bg-primary border-primary
+
+.p-multiselect-select-all
+    .p-highlight
+        .p-checkbox-box
+            @apply bg-primary border-primary
+
+.p-checkbox
+    &:not(.p-disabled)
+        &:has(.p-checkbox-input:hover)
+            .p-checkbox-box
+                @apply border-primary
