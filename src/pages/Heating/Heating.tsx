@@ -16,7 +16,7 @@ const Heating: React.FC<HeatingProps> = () => {
             <div className="flex justify-center mb-28 font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl">
                 <p>25 °C</p>
             </div>
-            <div className="w-80">
+            <div className="w-full md:w-80 px-4 md:px-0">
                 <ThresholdButton label="Set Notification Threshold" />
             </div>
         </div>
