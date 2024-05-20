@@ -14,7 +14,7 @@ const Lighting: React.FC = () => {
                 <p className='mx-6 my-6'>584568</p>
                 <button className="bg-none">-</button>
             </div>
-            <div className="w-80">
+            <div className="w-full md:w-80 px-4 md:px-0">
                 <ThresholdButton label="Set Notification Threshold" />
             </div>
         </div>
