@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 /* API */
-import { login } from '../../api/api';
+import { login } from '../../api/auth';
 
 /* Logo */ 
 import Logo from '../../assets/logo/logo.svg';
