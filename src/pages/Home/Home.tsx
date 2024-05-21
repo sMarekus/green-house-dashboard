@@ -17,6 +17,11 @@ const Home: React.FC<HomeProps> = () => {
                 </div>
 
                 <div className='box'>
+                    <h4>Lighting</h4>
+                    <span>99</span>
+                </div>
+
+                <div className='box'>
                     <h4>Humidity</h4>
                     <span>99</span>
                 </div>
@@ -27,18 +32,18 @@ const Home: React.FC<HomeProps> = () => {
                 </div>
             </div>
 
-            <div className='flex flex-col pt-10'>
-                <div className='flex 2xl:gap-x-2'>
-                    <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl'>Notifications</h1>
-                    <div className='bg-primary 2xl:w-8 2xl:h-8 rounded-full flex items-center justify-center font-pt_sans_arrow text-white font-semibold'>
+            <div className='flex flex-col pt-10 pb-10'>
+                <div className='flex gap-x-1 xl:gap-x-1.5 2xl:gap-x-2'>
+                    <h1 className='font-pt_sans_arrow text-secondary text-3xl xl:text-4xl 2xl:text-5xl'>Notifications</h1>
+                    <div className='bg-primary text-sm xl:text-base w-6 h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8 rounded-full flex items-center justify-center font-pt_sans_arrow text-white font-semibold'>
                         5
                     </div>
                 </div>
 
                 <div className='notifications flex flex-col pt-4'>
                     <div className='w-full p-4 bg-[#FDFDFD] border-[#DEDEDE] border rounded-lg'>
-                        <h1>Heating</h1>
-                        <p>Custom message</p>
+                        <h3 className='font-pt_sans_arrow text-secondary font-medium md:text-lg xl:text-xl'>Heating</h3>
+                        <p className='font-pt_sans text-gray-600 text-base'>Custom message</p>
                     </div>
                 </div>
             </div>
