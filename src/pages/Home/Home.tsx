@@ -26,6 +26,22 @@ const Home: React.FC<HomeProps> = () => {
                     <span>99</span>
                 </div>
             </div>
+
+            <div className='flex flex-col pt-10'>
+                <div className='flex 2xl:gap-x-2'>
+                    <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl'>Notifications</h1>
+                    <div className='bg-primary 2xl:w-8 2xl:h-8 rounded-full flex items-center justify-center font-pt_sans_arrow text-white font-semibold'>
+                        5
+                    </div>
+                </div>
+
+                <div className='notifications flex flex-col pt-4'>
+                    <div className='w-full p-4 bg-[#FDFDFD] border-[#DEDEDE] border rounded-lg'>
+                        <h1>Heating</h1>
+                        <p>Custom message</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
