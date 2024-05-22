@@ -16,7 +16,7 @@ export const getStatuses = async () => {
     }
 };
   
-  export const updateWindowStatus = async (windowStatus: number, ledStatus: number) => {
+  export const updateStatus = async (windowStatus: number, ledStatus: number) => {
     try {
       await axios.patch(`${API_URL}/update-status`, { windowStatus, ledStatus });
     } catch (error) {
