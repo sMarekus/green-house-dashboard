@@ -7,6 +7,7 @@ import HumidityIcon from '../Icons/Humidity';
 import SunIcon from '../Icons/Sun';
 import WindowsIcon from '../Icons/Windows';
 import LightBulbIcon from '../Icons/LightBulb';
+import BoltIcon from '../Icons/Bolt';
 
 import Logo from '../../assets/logo/logo.svg';
 
@@ -27,7 +28,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     { name: 'Lighting', Icon: LightBulbIcon, path: '/lighting', section: 'Utilities' },
     { name: 'Heating', Icon: SunIcon, path: '/heating', section: 'Utilities' },
     { name: 'Humidity', Icon: HumidityIcon, path: '/humidity', section: 'Utilities' },
-    { name: 'Windows', Icon: WindowsIcon, path: '/windows', section: 'Utilities' }
+    { name: 'Windows', Icon: WindowsIcon, path: '/windows', section: 'Utilities' },
+    { name: 'LED', Icon: BoltIcon, path: '/led', section: 'Utilities' }
   ];
 
   return (

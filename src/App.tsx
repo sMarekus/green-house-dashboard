@@ -11,6 +11,7 @@ import Humidity from './pages/Humidity/Humidity';
 import Lighting from './pages/Lighting/Lighting';
 import InformationHistory from './pages/InformationHistory/InformationHistory';
 import Login from './pages/Login/Login';
+import Led from './pages/LED/Led';
 
 import './App.css';
 
@@ -58,6 +59,7 @@ function RoutesWrapper({ toggleSidebar, isSidebarOpen, setIsLoginPage }: RoutesW
       <Route path='/humidity' element={<Humidity />} />
       <Route path='/information-history' element={<InformationHistory />} />
       <Route path='/windows' element={<Windows />} />
+      <Route path='/led' element={<Led />} />
     </Routes>
   );
 }
