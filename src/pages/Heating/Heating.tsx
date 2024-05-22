@@ -3,6 +3,7 @@ import HeatingIcon from '../../components/Icons/Sun';
 import ThresholdButton from '../../components/ThresholdButton';
 import ThresholdModal from '../../components/ThresholdModal';
 import { MeasurementService } from '../../api/Services/MeasurementService';
+import { NotificationService } from '../../api/Services/NotificationService';
 
 interface HeatingProps {}
 
@@ -27,9 +28,14 @@ const Heating: React.FC<HeatingProps> = () => {
         return () => clearInterval(intervalId);
     }, []);
 
-    const handleConfirm = () => {
-        // Logic for setting up threshold
-        setVisible(false);
+    const handleConfirm = async (threshold: number) => {
+        try {
+            await NotificationService.setHeatingNotification(threshold);
+            console.log("Successfully set heating notification threshold.");
+            setVisible(false);
+        } catch (error) {
+            console.error('Failed to set heating notification:', error);
+        }
     };
 
     return (

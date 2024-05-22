@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -7,13 +7,22 @@ interface ThresholdModalProps {
     visible: boolean;
     onHide: () => void;
     placeholder: string;
-    onConfirm: () => void;
+    onConfirm: (threshold: number) => void;
 }
 
 const ThresholdModal: React.FC<ThresholdModalProps> = ({ visible, onHide, placeholder, onConfirm }) => {
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const handleConfirm = () => {
+        const threshold = parseFloat(inputValue);
+        if (!isNaN(threshold)) {
+            onConfirm(threshold);
+        }
+    };
+
     const FooterContent = (
         <div className="flex justify-end space-x-2">
-            <Button label="Set Notification Threshold" className="bg-primary font-pt_sans" onClick={onConfirm} />
+            <Button label="Set Notification Threshold" className="bg-primary font-pt_sans" onClick={handleConfirm} />
             <Button label="Cancel" className="p-button-warning font-pt_sans" onClick={onHide} autoFocus />
         </div>
     );
@@ -29,6 +38,8 @@ const ThresholdModal: React.FC<ThresholdModalProps> = ({ visible, onHide, placeh
                 <InputText
                     className="w-full px-4 focus:shadow-none font-pt_sans"
                     placeholder={placeholder}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
                 />
             </div>
         </Dialog>

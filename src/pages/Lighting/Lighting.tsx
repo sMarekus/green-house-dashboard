@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LightBulbIcon from '../../components/Icons/LightBulb';
-import { Button } from 'primereact/button';
 
 const Lighting: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
