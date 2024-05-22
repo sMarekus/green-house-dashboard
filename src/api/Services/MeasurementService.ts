@@ -5,7 +5,7 @@ export const MeasurementService = {
     return await getMeasurements();
   },
   getLatestLightingMeasurement: async () => {
-    const response = await getLatestMeasurements('Lighting');
+    const response = await getLatestMeasurements('Light');
     return response.value;
   },
   getLatestTemperatureMeasurement: async () => {
