@@ -5,12 +5,15 @@ export const MeasurementService = {
     return await getMeasurements();
   },
   getLatestLightingMeasurement: async () => {
-    return await getLatestMeasurements('Light');
+    const response = await getLatestMeasurements('Lighting');
+    return response.value;
   },
   getLatestTemperatureMeasurement: async () => {
-    return await getLatestMeasurements('Temperature');
+    const response = await getLatestMeasurements('Temperature');
+    return response.value;
   },
   getLatestHumidityMeasurement: async () => {
-    return await getLatestMeasurements('Humidity');
+    const response = await getLatestMeasurements('Humidity');
+    return response.value;
   }
 };
