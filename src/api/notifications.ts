@@ -9,3 +9,12 @@ export const setNotification = async (threshold: number, measurementType: string
         throw new Error('Failed to set notification');
     }
 };
+
+export const getNotifications = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/Notification`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to fetch notifications');
+    }
+};
