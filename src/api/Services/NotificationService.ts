@@ -1,4 +1,4 @@
-import { setNotification } from '../notifications';
+import { setNotification, getNotifications } from '../notifications';
 
 export const NotificationService = {
     setHeatingNotification: async (threshold: number) => {
@@ -26,5 +26,9 @@ export const NotificationService = {
         } catch (error) {
             throw new Error('Failed to set humidity notification in NotificationService');
         }
+    },
+
+    getNotifications: async () => {
+        return await getNotifications();
     }
 };
