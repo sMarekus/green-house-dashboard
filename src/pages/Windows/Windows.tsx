@@ -31,7 +31,7 @@ const Windows: React.FC<WindowsProps> = () => {
   }, []);
 
   const handleOpenWindow = async () => {
-    if (ledStatus === null) return; // Ensure we have the ledStatus before making the request
+    if (ledStatus === null) return;
     try {
       await BoardService.updateWindowStatus(1, ledStatus);
       setWindowStatus(1);
@@ -45,7 +45,7 @@ const Windows: React.FC<WindowsProps> = () => {
   };
 
   const handleCloseWindow = async () => {
-    if (ledStatus === null) return; // Ensure we have the ledStatus before making the request
+    if (ledStatus === null) return;
     try {
       await BoardService.updateWindowStatus(0, ledStatus);
       setWindowStatus(0);
