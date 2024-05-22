@@ -10,3 +10,12 @@ export const getMeasurements = async () => {
     throw new Error('Failed to fetch measurements');
   }
 };
+
+export const getLatestMeasurements = async (type: string) => {
+  try {
+    const response = await axios.get(`${API_URL}/Measurement/latest+measurement?type=${type}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to get latest measurement');
+  }
+};
