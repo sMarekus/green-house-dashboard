@@ -1,6 +1,6 @@
 // src/pages/Heating/__tests__/Heating.test.tsx
 import React from 'react';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Heating from '../Heating';
 import { MeasurementService } from '../../../api/Services/MeasurementService';
@@ -18,9 +18,7 @@ describe('Heating Component', () => {
     test('renders Heating component correctly', async () => {
         (MeasurementService.getLatestTemperatureMeasurement as jest.Mock).mockResolvedValue(25);
 
-        await act(async () => {
-            render(<Heating />);
-        });
+        render(<Heating />);
 
         expect(screen.getByTestId('heating-title')).toBeInTheDocument();
 
@@ -33,9 +31,7 @@ describe('Heating Component', () => {
         (MeasurementService.getLatestTemperatureMeasurement as jest.Mock).mockResolvedValue(25);
         (NotificationService.setHeatingNotification as jest.Mock).mockResolvedValue(true);
 
-        await act(async () => {
-            render(<Heating />);
-        });
+        render(<Heating />);
 
         fireEvent.click(screen.getByTestId('open-threshold-modal-button'));
 
@@ -52,9 +48,7 @@ describe('Heating Component', () => {
     test('displays error message on fetch failure', async () => {
         (MeasurementService.getLatestTemperatureMeasurement as jest.Mock).mockRejectedValue(new Error('Failed to fetch'));
 
-        await act(async () => {
-            render(<Heating />);
-        });
+        render(<Heating />);
 
         await waitFor(() => {
             expect(screen.queryByText('25 °C')).not.toBeInTheDocument();
@@ -65,9 +59,7 @@ describe('Heating Component', () => {
         (MeasurementService.getLatestTemperatureMeasurement as jest.Mock).mockResolvedValue(25);
         (NotificationService.setHeatingNotification as jest.Mock).mockRejectedValue(new Error('Failed to set'));
 
-        await act(async () => {
-            render(<Heating />);
-        });
+        render(<Heating />);
 
         fireEvent.click(screen.getByTestId('open-threshold-modal-button'));
 
