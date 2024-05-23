@@ -1,3 +1,4 @@
+// src/pages/Heating/Heating.tsx
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import HeatingIcon from '../../components/Icons/Sun';
@@ -40,24 +41,25 @@ const Heating: React.FC<HeatingProps> = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-screen" data-testid="heating-component">
             <Helmet>
                 <title>Heating - Greenhouse Dashboard</title>
             </Helmet>
-            <h1 className="font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl mb-8">Heating</h1>
-            <div className="mb-5">
+            <h1 className="font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl mb-8" data-testid="heating-title">Heating</h1>
+            <div className="mb-5" data-testid="heating-icon">
                 <HeatingIcon className="w-52 h-52" color="#BBBB" />
             </div>
-            <div className="flex justify-center mb-28 font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl">
+            <div className="flex justify-center mb-28 font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl" data-testid="temperature-display">
                 <p>{temperature !== null ? `${temperature} °C` : 'Loading...'}</p>
             </div>
-            <div className="w-full md:w-80 px-4 md:px-0">
-                <ThresholdButton label="Set Notification Threshold" onClick={() => setVisible(true)} />
+            <div className="w-full md:w-80 px-4 md:px-0" data-testid="threshold-button-container">
+                <ThresholdButton label="Set Notification Threshold" onClick={() => setVisible(true)} data-testid="open-threshold-modal-button" />
                 <ThresholdModal
                     visible={visible}
                     onHide={() => setVisible(false)}
                     placeholder="Set Maximum Heating Level"
                     onConfirm={handleConfirm}
+                    data-testid="threshold-modal"
                 />
             </div>
         </div>
