@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BoardService } from '../../api/Services/BoardService';
 import './Windows.sass';
-
+import { Helmet } from 'react-helmet';
 import TriangleIcon from './assets/images/Triangle';
 import SunIcon from './assets/images/Sun';
 import TriangleWhiteTop from './assets/images/TriangleWhiteTop';
@@ -65,6 +65,9 @@ const Windows: React.FC<WindowsProps> = () => {
 
   return (
     <div className='pt-[100px] px-5 lg:pl-[272px] xl:pl-[344px] lg:pr-4 xl:pr-6'>
+      <Helmet>
+        <title>Windows - Greenhouse Dashboard</title>
+      </Helmet>
       <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl'>Window</h1>
 
       <div className='flex flex-col'>

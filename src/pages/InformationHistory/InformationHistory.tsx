@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './InformationHistory.sass';
-
+import { Helmet } from 'react-helmet';
 import { FilterMatchMode } from 'primereact/api';
 import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import { Column, ColumnFilterElementTemplateOptions } from 'primereact/column';
@@ -87,6 +87,9 @@ const InformationHistory: React.FC = () => {
 
   return (
     <div className='pt-[100px] px-5 lg:pl-[272px] xl:pl-[344px] lg:pr-4 xl:pr-6'>
+      <Helmet>
+        <title>Information History - Greenhouse Dashboard</title>
+      </Helmet>
       <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl'>Information History</h1>
 
       <DataTable className='pt-3 md:pt-4 lg:pt-5 xl:pt-6 2xl:pt-8' value={measurements} paginator dataKey="id" rows={5} filters={filters} filterDisplay="row" loading={loading}

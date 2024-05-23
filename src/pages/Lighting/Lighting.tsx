@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import LightBulbIcon from '../../components/Icons/LightBulb';
 import ThresholdButton from '../../components/ThresholdButton';
 import ThresholdModal from '../../components/ThresholdModal';
@@ -40,6 +41,9 @@ const Lighting: React.FC<LightingProps> = () => {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
+            <Helmet>
+                <title>Lighting - Greenhouse Dashboard</title>
+            </Helmet>
             <h1 className="font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl mb-8">Lighting</h1>
             <div className="mb-5">
                 <LightBulbIcon className="w-52 h-52" color="#BBBB" />
