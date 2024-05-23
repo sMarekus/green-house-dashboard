@@ -58,27 +58,27 @@ const Home: React.FC<HomeProps> = () => {
             <div className='flex flex-col md:flex-row justify-between gap-y-8 md:gap-y-0 md:gap-x-4 lg:gap-x-5 xl:gap-x-6 2xl:gap-x-10 pt-3 md:pt-4 lg:pt-5 xl:pt-6 2xl:pt-8'>
                 <div className='box'>
                     <h4>Lighting</h4>
-                    <span>{lighting !== null ? `${lighting} lx` : <Skeleton width='100%' height='4rem' />}</span>
+                    <span>{lighting !== null ? `${lighting} lx` : <Skeleton width='100%' height='4rem' data-testid='skeleton-element' />}</span>
                 </div>
 
                 <div className='box'>
                     <h4>LED</h4>
-                    <span>{led !== null ? (led === 1 ? 'ON' : 'OFF') : <Skeleton width='100%' height='4rem' />}</span>
+                    <span>{led !== null ? (led === 1 ? 'ON' : 'OFF') : <Skeleton width='100%' height='4rem' data-testid='skeleton-element' />}</span>
                 </div>
 
                 <div className='box'>
                     <h4>Window</h4>
-                    <span>{windowStatus !== null ? (windowStatus === 1 ? 'OPEN' : 'CLOSED') : <Skeleton width='100%' height='4rem' />}</span>
+                    <span>{windowStatus !== null ? (windowStatus === 1 ? 'OPEN' : 'CLOSED') : <Skeleton width='100%' height='4rem' data-testid='skeleton-element' />}</span>
                 </div>
 
                 <div className='box'>
                     <h4>Humidity</h4>
-                    <span>{humidity !== null ? `${humidity}%` : <Skeleton width='100%' height='4rem' />}</span>
+                    <span>{humidity !== null ? `${humidity}%` : <Skeleton width='100%' height='4rem' data-testid='skeleton-element' />}</span>
                 </div>
 
                 <div className='box'>
                     <h4>Heating</h4>
-                    <span>{heating !== null ? `${heating}°C` : <Skeleton width='100%' height='4rem' />}</span>
+                    <span>{heating !== null ? `${heating}°C` : <Skeleton width='100%' height='4rem' data-testid='skeleton-element' />}</span>
                 </div>
             </div>
 
