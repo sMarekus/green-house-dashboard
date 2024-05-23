@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, isSidebarOpen  }) => {
         <header className={isSidebarOpen ? 'opened' : 'closed'}>
             <div className='flex items-center h-full'>
                 <button className='flex lg:hidden' onClick={toggleSidebar}>
-                    <img src={isSidebarOpen ? XMark : Hamburger} alt="Menu" className='w-6 h-6' />
+                    <img src={isSidebarOpen ? XMark : Hamburger} alt="Menu" className='w-6 h-6' data-testid={isSidebarOpen ? 'x-mark-icon' : 'hamburger-icon'} />
                 </button>
             </div>
         </header>
