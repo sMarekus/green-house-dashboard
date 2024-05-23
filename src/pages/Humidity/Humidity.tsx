@@ -1,4 +1,5 @@
 import React,{useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import HumidityIcon from '../../components/Icons/Humidity';
 import ThresholdButton from '../../components/ThresholdButton';
 import ThresholdModal from '../../components/ThresholdModal';
@@ -42,6 +43,9 @@ const Humidity: React.FC<HumidityProps> = () => {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
+        <Helmet>
+            <title>Humidity - Greenhouse Dashboard</title>
+        </Helmet>
         <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl mb-12'>Humidity</h1>
         <div className="mb-10">
             <HumidityIcon className="w-40 h-40" color='#BBBB' />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BoardService } from '../../api/Services/BoardService';
 import BoltIcon from '../../components/Icons/Bolt';
+import { Helmet } from 'react-helmet';
 
 const Led: React.FC = () => {
     const [ledStatus, setLedStatus] = useState<number | null>(null);
@@ -59,6 +60,9 @@ const Led: React.FC = () => {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen">
+        <Helmet>
+            <title>LED - Greenhouse Dashboard</title>
+        </Helmet>
             <h1 className='font-pt_sans_arrow text-secondary text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl mb-8'>LED</h1>
             <div className="mb-5">
                 <BoltIcon className="w-52 h-52" color={ledStatus === 1 ? '#10B981' : '#BBBBBB'} />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
 /* API */
@@ -35,6 +36,9 @@ const Login: React.FC = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-white font-pt_sans px-5 lg:px-10">
+            <Helmet>
+                <title>Login - Greenhouse Dashboard</title>
+            </Helmet>
             <div className="w-full max-w-sm p-8 bg-gray-50 rounded-lg">
                 <form onSubmit={handleLogin} className="space-y-6">
                     <div className="flex flex-col items-center justify-center">
