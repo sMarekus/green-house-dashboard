@@ -28,7 +28,9 @@ describe('Led Component', () => {
       expect(BoardService.getStatuses).toHaveBeenCalledTimes(1);
     });
 
-    expect(screen.getByTestId('led-status')).toHaveTextContent('LED is OFF');
+    await waitFor(() => {
+      expect(screen.getByTestId('led-status')).toHaveTextContent('LED is OFF');
+    });
   });
 
   test('turns LED on', async () => {
@@ -52,7 +54,9 @@ describe('Led Component', () => {
       expect(BoardService.updateStatus).toHaveBeenCalledWith(1, 1);
     });
 
-    expect(screen.getByTestId('led-status')).toHaveTextContent('LED is ON');
+    await waitFor(() => {
+      expect(screen.getByTestId('led-status')).toHaveTextContent('LED is ON');
+    });
   });
 
   test('turns LED off', async () => {
@@ -76,7 +80,9 @@ describe('Led Component', () => {
       expect(BoardService.updateStatus).toHaveBeenCalledWith(1, 0);
     });
 
-    expect(screen.getByTestId('led-status')).toHaveTextContent('LED is OFF');
+    await waitFor(() => {
+      expect(screen.getByTestId('led-status')).toHaveTextContent('LED is OFF');
+    });
   });
 
   test('handles errors while fetching statuses', async () => {
