@@ -1,10 +1,8 @@
-// src/components/Header/__tests__/Header.test.tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Header from '../Header';
 
-// Mock the SVG imports
 jest.mock('../../../assets/icons/hamburger.svg', () => 'hamburger.svg');
 jest.mock('../../../assets/icons/x-mark.svg', () => 'x-mark.svg');
 
