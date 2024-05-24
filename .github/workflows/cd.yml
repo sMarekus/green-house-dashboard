@@ -1,41 +1,50 @@
-name: CD
+name: CD Pipeline
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: sep4frontendapp  # set this to the name of your Azure Web App for the frontend
+  AZURE_RESOURCE_GROUP: sep4resource  # set this to the name of your Azure Resource Group
+  AZURE_CONTAINER_REGISTRY: sep4backendregistry.azurecr.io  # set this to the login server of your Azure Container Registry
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Log in to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ env.AZURE_CONTAINER_REGISTRY }}
+          username: ${{ secrets.AZURE_CONTAINER_REGISTRY_USERNAME }}
+          password: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
 
-    - name: Build Docker image
-      run: |
-        docker build -t sep4backendregistry.azurecr.io/proxy:latest -f green-house-dashboard/proxy/Dockerfile --no-cache .
+      - name: Build Docker image
+        run: |
+          docker build --no-cache -t ${{ env.AZURE_CONTAINER_REGISTRY }}/proxy:latest -f green-house-dashboard/proxy/Dockerfile .
 
-    - name: Azure Container Registry Login
-      run: |
-        az acr login --name sep4backendregistry
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.AZURE_CONTAINER_REGISTRY }}/proxy:latest
 
-    - name: Push Docker image
-      run: |
-        docker push sep4backendregistry.azurecr.io/proxy:latest
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
 
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: sep4frontend2024
-        images: sep4backendregistry.azurecr.io/proxy:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
+      - name: Azure WebApp Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: ${{ env.AZURE_CONTAINER_REGISTRY }}/proxy:latest
