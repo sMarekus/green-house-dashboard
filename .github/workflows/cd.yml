@@ -1,1 +1,41 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Build Docker image
+      run: |
+        docker build -t sep4backendregistry.azurecr.io/proxy:latest -f green-house-dashboard/proxy/Dockerfile --no-cache .
+
+    - name: Azure Container Registry Login
+      run: |
+        az acr login --name sep4backendregistry
+
+    - name: Push Docker image
+      run: |
+        docker push sep4backendregistry.azurecr.io/proxy:latest
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: <Your-Azure-WebApp-Name>
+        images: sep4backendregistry.azurecr.io/proxy:latest
 
