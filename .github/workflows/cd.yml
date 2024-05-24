@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: sep4frontendapp  # set this to the name of your Azure Web App for the frontend
+  AZURE_WEBAPP_NAME: sep4backendapp  # set this to the name of your Azure Web App for the frontend
   AZURE_RESOURCE_GROUP: sep4resource  # set this to the name of your Azure Resource Group
   AZURE_CONTAINER_REGISTRY: sep4backendregistry.azurecr.io  # set this to the login server of your Azure Container Registry
 
