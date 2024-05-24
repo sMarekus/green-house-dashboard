@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t sep4backendregistry.azurecr.io/proxy:latest -f proxy/Dockerfile --no-cache .
+          docker build -t sep4backendregistry.azurecr.io/proxy:latest -f green-house-dashboard/proxy/Dockerfile --no-cache .
 
       - name: Push Docker image
         run: |
