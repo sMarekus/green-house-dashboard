@@ -36,6 +36,6 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: <Your-Azure-WebApp-Name>
+        app-name: sep4frontend2024
         images: sep4backendregistry.azurecr.io/proxy:latest
 
