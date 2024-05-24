@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --no-cache -t ${{ env.AZURE_CONTAINER_REGISTRY }}/proxy:latest -f green-house-dashboard/proxy/Dockerfile .
+          docker build --no-cache -t ${{ env.AZURE_CONTAINER_REGISTRY }}/proxy:latest -f proxy/Dockerfile .
 
       - name: Push Docker image
         run: |
