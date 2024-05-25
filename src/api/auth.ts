@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://sep4backendapp.azurewebsites.net/api/';
+const API_URL = 'https://sep4backendapp.azurewebsites.net/api/';
 
 export const login = async (username: string, password: string) => {
   try {
