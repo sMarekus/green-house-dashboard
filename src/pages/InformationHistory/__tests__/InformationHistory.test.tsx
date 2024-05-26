@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import InformationHistory from '../InformationHistory';
 import { MeasurementService } from '../../../api/Services/MeasurementService';
 
-// Mock the MeasurementService
 jest.mock('../../../api/Services/MeasurementService');
 
 const mockMeasurements = [

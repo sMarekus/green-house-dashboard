@@ -6,11 +6,7 @@ import ThresholdModal from '../../components/ThresholdModal';
 import { MeasurementService } from '../../api/Services/MeasurementService';
 import { NotificationService } from '../../api/Services/NotificationService';
 
-interface HumidityProps {
-    
-}
-
-const Humidity: React.FC<HumidityProps> = () => {
+const Humidity: React.FC = () => {
     const [visible, setVisible] = useState(false);
     const [humidity, setHumidity] = useState<number | null>(null);
     

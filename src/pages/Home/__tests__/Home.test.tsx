@@ -7,7 +7,6 @@ import { BoardService } from '../../../api/Services/BoardService';
 import { MeasurementService } from '../../../api/Services/MeasurementService';
 import { NotificationService } from '../../../api/Services/NotificationService';
 
-// Mock the services
 jest.mock('../../../api/Services/BoardService');
 jest.mock('../../../api/Services/MeasurementService');
 jest.mock('../../../api/Services/NotificationService');
@@ -129,6 +128,6 @@ describe('Home Component', () => {
       </BrowserRouter>
     );
 
-    expect(await screen.findAllByTestId('skeleton-element')).toHaveLength(5); // 5 skeletons still displayed
+    expect(await screen.findAllByTestId('skeleton-element')).toHaveLength(5);
   });
 });

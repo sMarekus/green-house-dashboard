@@ -1,11 +1,10 @@
-// src/components/ThresholdButton.tsx
 import React from 'react';
 import { Button } from 'primereact/button';
 
 interface ThresholdButtonProps {
     label: string;
     className?: string;
-    onClick?: () => void; // Add onClick prop
+    onClick?: () => void;
     'data-testid'?: string;
 }
 

@@ -1,4 +1,3 @@
-// components/icons/HomeIcon.jsx
 import React from 'react';
 
 interface SunIconProps {

@@ -2,5 +2,5 @@ header
     @apply h-20 w-full border-b border-[#0000001A] fixed px-5 lg:px-10 bg-white right-0 top-0
 
     &.opened
-        // @apply w-[calc(100%-15rem)]
+        // @apply w-[calc(100%-15rem)] - This is not going to work, because it's single rule, to make this work there should be more, e.g. @apply w-[calc(100%-15rem)] h-full
         width: calc(100% - 15rem)

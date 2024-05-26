@@ -1,4 +1,3 @@
-// components/icons/HomeIcon.jsx
 import React from 'react';
 
 const ClockIcon = ({ color = 'currentColor' }) => (

@@ -5,7 +5,6 @@ import Lighting from '../Lighting';
 import { MeasurementService } from '../../../api/Services/MeasurementService';
 import { NotificationService } from '../../../api/Services/NotificationService';
 
-// Mocking the services
 jest.mock('../../../api/Services/MeasurementService');
 jest.mock('../../../api/Services/NotificationService');
 

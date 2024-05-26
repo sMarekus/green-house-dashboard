@@ -1,4 +1,3 @@
-// src/pages/Home/Home.tsx
 import React, { useEffect, useState } from 'react';
 import { BoardService } from '../../api/Services/BoardService';
 import { MeasurementService } from '../../api/Services/MeasurementService';
