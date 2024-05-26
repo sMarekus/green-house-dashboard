@@ -1,4 +1,5 @@
 import React from 'react';
+
 interface HumidityIconProps {
     color?: string;
     className?: string;
