@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
-
-/* API */
 import { login } from '../../api/auth';
-
-/* Logo */ 
 import Logo from '../../assets/logo/logo.svg';
-
-/* PrimeReact Components */ 
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
-
-import './Login.sass'
+import './Login.sass';
+import { setTokenWithExpiry } from '../../utils/token';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -27,7 +21,8 @@ const Login: React.FC = () => {
 
         try {
             const token = await login(username, password);
-            localStorage.setItem('token', token);
+            const tokenExpiry = 3600 * 1000; // 1 hour
+            setTokenWithExpiry('token', token, tokenExpiry);
             navigate('/');
         } catch (error: any) {
             setError(error.response?.data?.message || 'Login failed. Please try again.');
