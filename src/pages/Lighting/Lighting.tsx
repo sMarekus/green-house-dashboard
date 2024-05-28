@@ -6,11 +6,10 @@ import ThresholdModal from '../../components/ThresholdModal';
 import { MeasurementService } from '../../api/Services/MeasurementService';
 import { NotificationService } from '../../api/Services/NotificationService';
 
-interface LightingProps {}
-
-const Lighting: React.FC<LightingProps> = () => {
+const Lighting: React.FC = () => {
     const [visible, setVisible] = useState(false);
     const [light, setLight] = useState<number | null>(null);
+    const [error, setError] = useState<string>('');
 
     useEffect(() => {
         const fetchLight = async () => {
@@ -36,6 +35,7 @@ const Lighting: React.FC<LightingProps> = () => {
             setVisible(false);
         } catch (error) {
             console.error('Failed to set lighting notification:', error);
+            setError('Something went wrong, please try again.');
         }
     };
 
@@ -51,6 +51,7 @@ const Lighting: React.FC<LightingProps> = () => {
             <div className="flex justify-center mb-28 font-pt_sans_arrow text-secondary text-3xl md:text-4xl xl:text-5xl">
                 <p>{light !== null ? `${light} lx` : 'Loading...'}</p>
             </div>
+            {error && <p className="text-red-500 mt-2" data-testid="error-message">{error}</p>}
             <div className="w-full md:w-80 px-4 md:px-0">
                 <ThresholdButton label="Set Notification Threshold" onClick={() => setVisible(true)} data-testid="open-threshold-modal-button"/>
                 <ThresholdModal

@@ -13,10 +13,14 @@ interface ThresholdModalProps {
 
 const ThresholdModal: React.FC<ThresholdModalProps> = ({ visible, onHide, placeholder, onConfirm, 'data-testid': dataTestId }) => {
     const [inputValue, setInputValue] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     const handleConfirm = () => {
         const threshold = parseFloat(inputValue);
-        if (!isNaN(threshold)) {
+        if (isNaN(threshold) || threshold < 0) {
+            setError('Please enter a valid non-negative number.');
+        } else {
+            setError('');
             onConfirm(threshold);
         }
     };
@@ -41,9 +45,14 @@ const ThresholdModal: React.FC<ThresholdModalProps> = ({ visible, onHide, placeh
                     className="w-full px-4 focus:shadow-none font-pt_sans"
                     placeholder={placeholder}
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    keyfilter="int"
+                    onChange={(e) => {
+                        setInputValue(e.target.value);
+                        setError('');
+                    }}
                     data-testid="threshold-input"
                 />
+                {error && <p className="text-red-500 mt-2" data-testid="error-message">{error}</p>}
             </div>
         </Dialog>
     );
